@@ -6,6 +6,7 @@ import ContactComponent from "./components/contact";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
+  var key = "/";
   return (
     <Router>
       <div className="sidebar-column">
@@ -13,18 +14,9 @@ function App() {
       </div>
       <div className="content">
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/allpost">
-            <Home />
-          </Route>
-          <Route path="/about">
-            <AboutComponent />
-          </Route>
-          <Route path="/contact">
-            <ContactComponent />
-          </Route>
+          <Route key={key} exact path={['/', '/allpost']} component={Home} />
+          <Route key={key} path="/about" component={AboutComponent} />
+          <Route  key={key} path="/contact" component={ContactComponent} />      
         </Switch>
       </div>
     </Router>

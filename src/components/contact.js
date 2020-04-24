@@ -13,12 +13,12 @@ class ContactComponent extends Component {
     </div>
     <div className="form-wrapper w-form">
         <form data-name="Email Form" id="email-form" name="email-form">
-            <label for="Name">Name</label>
-            <input className="text-field w-input" data-name="Name" id="Name" maxlength="256" name="Name" placeholder="Enter your name" type="text" />
-            <label for="Email">Email Address</label>
-            <input className="text-field w-input" data-name="Email" id="Email" maxlength="256" name="Email" placeholder="Enter your email address" required="required" type="email" />
-            <label for="Message">Message</label>
-            <textarea className="text-area text-field w-input" data-name="Message" id="Message" maxlength="5000" name="Message" placeholder="Enter your message" required="required"></textarea>
+            <label htmlFor="Name">Name</label>
+            <input className="text-field w-input" data-name="Name" id="Name" maxLength="256" name="Name" placeholder="Enter your name" type="text" />
+            <label htmlFor="Email">Email Address</label>
+            <input className="text-field w-input" data-name="Email" id="Email" maxLength="256" name="Email" placeholder="Enter your email address" required="required" type="email" />
+            <label htmlFor="Message">Message</label>
+            <textarea className="text-area text-field w-input" data-name="Message" id="Message" maxLength="5000" name="Message" placeholder="Enter your message" required="required"></textarea>
             <input className="button w-button" data-wait="Please wait..." type="submit" value="Submit" />
         </form>
         <div className="success-message w-form-done">

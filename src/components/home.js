@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import BlogComponents from './blog';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
 
 
 class Home extends Component {
@@ -12,10 +11,17 @@ class Home extends Component {
         currentPage: ""
         }
     }
-    componentDidMount() {
-    
+    componentDidUpdate() { 
+        console.log(this.props.match.path);
 
-     this.setState({currentPage:  window.location.pathname });
+     //   this.setState({currentPage:  this.props.match.path});
+
+    }
+
+    componentDidMount() {   
+    console.log(this.props.match.path);
+
+
 
         axios.get('https://jsonplaceholder.typicode.com/posts')
             .then(res => {
@@ -33,8 +39,9 @@ class Home extends Component {
     }
     render() { 
         return ( 
-            <div>
+            <div>   
                 {this.state.currentPage}
+
 
         <div className="blog-list w-dyn-list">
             <div className="w-dyn-items">
