@@ -64,7 +64,7 @@ class AdvanceForm extends Component {
                 my_radio: {
                     value: '',
                     placeholder: 'Are you a frontend developer?',
-                    valid: false,
+                    valid: true,
                     touched: false,
                     validationRules: {
                         // isRequired: true,
@@ -223,7 +223,9 @@ class AdvanceForm extends Component {
                                 return (
                                 
                                     <div key={option.value}>
-                                    <input type="radio"  name="my_radio" id={"id_"+option.value}  value={option.value}   onChange={this.handleUserInput}/>
+                                    <input type="radio"  name="my_radio" id={"id_"+option.value} 
+                                    defaultChecked={option.value =="1"}
+                                    value={option.value}   onChange={this.handleUserInput}/>
                                     <label htmlFor={"id_"+option.value}>{option.displayValue}</label>
                                   </div>
                                 )
