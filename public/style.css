@@ -867,3 +867,19 @@ html.w-mod-js *[data-ix="scale-on-scroll"] {
     margin-left: 0px;
   }
 }
+.displayErrors input:invalid , .displayErrors textarea:invalid, .invalid{
+  border-color: red;
+}
+.hide{
+  display: none
+}
+.invalid.hide{
+  color:red;
+  display: block;
+  font-size:12px;
+}
+.button:disabled ,.button:disabled:hover{
+  background-color: #ccc;
+  border-color: #ccc;
+  color: #6d6b6b;
+}

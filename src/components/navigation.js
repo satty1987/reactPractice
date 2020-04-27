@@ -19,6 +19,7 @@ class Navigation extends Component {
                 <Link className="nav-link w-nav-link w--current" to={"/allpost"}>All Post</Link>
                 <Link className="nav-link w-nav-link w--current" to={"/about"}>About</Link>
                 <Link className="nav-link w-nav-link w--current" to={"/contact"}>Contact</Link>
+                <Link className="nav-link w-nav-link w--current" to={"/form"}>Sign Up</Link>
 
                 <div className="divider"></div>
                 <div className="social-link-group">

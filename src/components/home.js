@@ -1,38 +1,38 @@
 import React, { Component } from 'react';
 import BlogComponents from './blog';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = { post : [],
-        allPost: [],
-        currentPage: ""
+        allPost: []
         }
     }
-    componentDidUpdate() { 
-        console.log(this.props.match.path);
 
-     //   this.setState({currentPage:  this.props.match.path});
-
-    }
-
-    componentDidMount() {   
-    console.log(this.props.match.path);
-
-
-
+    getData(){
         axios.get('https://jsonplaceholder.typicode.com/posts')
             .then(res => {
                 this.setState({allPost: res.data });
-                this.setState({ post: res.data.slice(0,8) });
+                if(this.props.match.path ==="/allpost"){
+                    this.setState({ post: res.data });
+                }else{
+                    this.setState({ post: res.data.slice(0,8) });
+                }
+               
                 console.log(this.state.post);
             })
             .catch(function (error) {
                 console.log(error);
             })
     }
+    componentDidMount() {   
+this.getData();
+
+    }
+
     allPost(){
 
         this.setState({ post: this.state.allPost }); 
@@ -40,20 +40,26 @@ class Home extends Component {
     render() { 
         return ( 
             <div>   
-                {this.state.currentPage}
-
-
         <div className="blog-list w-dyn-list">
             <div className="w-dyn-items">
 
-                {this.state.post.map((item,key) =>{
+{this.props.match.path==="/allpost" ? 
+
+                this.state.allPost.map((item,key) =>{
                     return <BlogComponents key={item.id} title={item.title} description={item.body} ></BlogComponents>
-                })}
+                })
+                :
+                this.state.post.map((item,key) =>{
+                    return <BlogComponents key={item.id} title={item.title} description={item.body} ></BlogComponents>
+                })
+
+ }
             </div> 
         </div>
         <div className="button-wrapper">
-            <button className="button w-button" onClick={this.allPost.bind(this)} >More posts→</button>
-                        
+
+                                      <Link className="button w-button" to={"/allpost"}>More posts→</Link>
+  
             </div>
         </div>
         );
