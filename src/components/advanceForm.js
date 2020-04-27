@@ -61,8 +61,8 @@ class AdvanceForm extends Component {
                         { value: 'female', displayValue: 'Female' }
                     ]
                 },
-                my_radio: {
-                    value: '',
+                developer: {
+                    value: 'Yes',
                     placeholder: 'Are you a frontend developer?',
                     valid: true,
                     touched: false,
@@ -84,7 +84,6 @@ class AdvanceForm extends Component {
     handleUserInput(event) {
         const name = event.target.name;
         const value = event.target.value;
-        console.log(event.target.value);
         const updatedControls = { ...this.state.formControls };
         const updatedFormElement = { ...updatedControls[name] };
         updatedFormElement.value = value;
@@ -136,7 +135,16 @@ class AdvanceForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        alert('A name was submitted: ');
+        const {name,email,developer,password,gender,address} = this.state.formControls;
+        const body ={
+            name: name.value,
+            email: email.value,
+            developer:developer.value,
+            password: password.value,
+            gender:gender.value,
+            address:address.value
+        }
+       console.log(body)
 
     }
     render() {
@@ -218,14 +226,14 @@ class AdvanceForm extends Component {
                         </div>
 
                         <div className={'form-group '} >
-                            <label htmlFor="Name">{formControls.my_radio.placeholder}</label>
-                            {formControls.my_radio.options.map((option) => {
+                            <label htmlFor="Name">{formControls.developer.placeholder}</label>
+                            {formControls.developer.options.map((option) => {
                                 return (
                                 
                                     <div key={option.value}>
-                                    <input type="radio"  name="my_radio" id={"id_"+option.value} 
-                                    defaultChecked={option.value =="1"}
-                                    value={option.value}   onChange={this.handleUserInput}/>
+                                    <input type="radio"  name="developer" id={"id_"+option.value} 
+                                    defaultChecked={option.displayValue==='Yes'}
+                                    value={option.displayValue}   onChange={this.handleUserInput}/>
                                     <label htmlFor={"id_"+option.value}>{option.displayValue}</label>
                                   </div>
                                 )
